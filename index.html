@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaoPalm Krabi Beta</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">🌴 <span>KaoPalm</span></div>
+    <nav>
+      <a class="active">🏠 หน้าหลัก</a>
+      <a href="#map">📍 แผนที่ราคา</a>
+      <a href="#feed">🧾 รายการล่าสุด</a>
+      <a href="#form">➕ บันทึกข้อมูล</a>
+      <a href="#plan">🚀 แผนลงพื้นที่</a>
+    </nav>
+    <div class="infoBox">ร่วมเป็นส่วนหนึ่งของข้อมูลราคาปาล์มที่แม่นยำ เพื่อชาวสวนกระบี่</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="location">📍 กระบี่ ▾</button>
+      <div class="user">🔔 <span>สมชาย ใจดี</span></div>
+    </header>
+
+    <section class="grid hero">
+      <div class="card orangeCard">
+        <p>ราคาปาล์มน้ำมันวันนี้</p>
+        <h1><span id="avgPrice">4.92</span> <small>บาท/กก.</small></h1>
+        <p class="badge">▲ +0.17</p>
+        <div class="official">
+          <p>ราคากลางจังหวัดกระบี่</p>
+          <h2>4.78 <small>บาท/กก.</small></h2>
+          <small>อัปเดต 19 พ.ค. 2567 08:30 น.</small>
+        </div>
+      </div>
+
+      <div class="card mapCard" id="map">
+        <div class="cardHead"><h2>แผนที่ราคาปาล์ม</h2><button>ดูทั้งหมด</button></div>
+        <div class="fakeMap">
+          <div class="pin green" style="left:58%;top:44%">4.95<br><small>ปลายพระยา</small></div>
+          <div class="pin green" style="left:78%;top:26%">4.92<br><small>อ่าวลึก</small></div>
+          <div class="pin orange" style="left:28%;top:22%">4.90<br><small>คลองท่อม</small></div>
+          <div class="pin red" style="left:58%;top:72%">4.60<br><small>เกาะลันตา</small></div>
+        </div>
+        <div class="legend"><span>🟢 4.90 ขึ้นไป</span><span>🟠 4.70–4.89</span><span>🔴 ต่ำกว่า 4.70</span></div>
+      </div>
+
+      <form class="card formCard" id="form">
+        <h2>บันทึกข้อมูลราคาปาล์ม</h2>
+        <div class="two">
+          <label>ชื่อผู้ขาย *<input id="seller_name" required placeholder="เช่น สมชาย ใจดี"></label>
+          <label>ลาน / โรงงาน *<input id="mill_name" required placeholder="เช่น XYZ ปาล์มน้ำมัน"></label>
+          <label>ราคาต่อกก. *<input id="price" required type="number" step="0.01" placeholder="เช่น 4.90"></label>
+          <label>น้ำหนักรวม (กก.) *<input id="gross_weight" required type="number" placeholder="เช่น 7430"></label>
+          <label>น้ำหนักสุทธิ (กก.) *<input id="net_weight" required type="number" placeholder="เช่น 7430"></label>
+          <label>อำเภอ *
+            <select id="district" required>
+              <option>คลองท่อม</option><option>อ่าวลึก</option><option>ปลายพระยา</option><option>เมืองกระบี่</option><option>เกาะลันตา</option>
+            </select>
+          </label>
+          <label>วันที่ชั่ง<input id="date" type="date"></label>
+          <label>เวลา<input id="time" type="time"></label>
+        </div>
+        <label>รูปตั๋วชั่งปาล์ม<input id="ticket" type="file" accept="image/*"></label>
+        <button class="primary" type="submit">บันทึกข้อมูล</button>
+        <p id="status"></p>
+      </form>
+    </section>
+
+    <section class="grid lower">
+      <div class="card" id="feed">
+        <div class="cardHead"><h2>รายการล่าสุด</h2><button onclick="loadTransactions()">รีเฟรช</button></div>
+        <div id="feedList"></div>
+      </div>
+      <div class="card" id="plan">
+        <h2>Kick off กระบี่ 30 วัน</h2>
+        <ol>
+          <li>วัน 1–3: เก็บตั๋วจริง 30–50 ใบ และรายชื่อลานหลัก</li>
+          <li>วัน 4–7: Deploy เว็บ + ตั้ง Supabase</li>
+          <li>สัปดาห์ 2: ทดลองกับชาวสวน 20 คน</li>
+          <li>สัปดาห์ 3: เก็บข้อมูลให้ได้ 100–200 รายการ</li>
+          <li>สัปดาห์ 4: สรุป coverage รายอำเภอ และปรับ UX</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+<script src="app.js"></script>
+</body>
+</html>
