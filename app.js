@@ -1,5 +1,5 @@
 // 1) ใส่ค่า Supabase ของคุณตรงนี้หลังสร้างโปรเจกต์
-const SUPABASE_URL = https://jeeomgnddearpezwfrfa.supabase.co
+const SUPABASE_URL = "https://jeeomgnddearpezwfrfa.supabase.co";
 const SUPABASE_ANON_KEY = sb_publishable_JNIBifUx3oqIhLSaVFG_sw_fXkS_I15
 const hasSupabase = !SUPABASE_URL.includes('PASTE_');
 const supabaseClient = hasSupabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
